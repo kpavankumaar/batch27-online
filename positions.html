@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>positions</title>
+	<style type="text/css">
+		.main{
+			
+			background-color: lightgrey;
+			width: 400px;
+			margin:auto;
+			height:1500px;
+		}
+		.box{
+			width:200px;
+			height:200px;
+			margin:10px;
+			background-color: steelblue;
+		}
+		.box1{
+			position:relative;
+			right:300px;
+			bottom:100px;
+		}
+		.box2{
+			position:absolute;
+			left:300px;
+			bottom:350px;
+			z-index: 1;
+		}
+		.box3{
+			position: fixed;
+			background-color: orange;
+			top:200px;
+			z-index: 2;
+		}
+
+		div.box:first-child{
+			background-color: green;
+		}
+		div.box:last-child{
+			background-color:grey;	
+		}
+		div.box:nth-child(odd){
+			position: relative;
+			background-color: crimson;
+		};
+		
+	</style>
+</head>
+<body>
+	<div class="main">
+		<div class="box box1"></div>
+		<div class="box box2"></div>
+
+		<div class="box box3"></div>
+		<div class="box box4"></div>
+	</div>
+</body>
+</html>

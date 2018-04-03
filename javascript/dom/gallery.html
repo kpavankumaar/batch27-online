@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>gallery</title>
+	<style type="text/css">
+		html,body,div,p,ul,li{
+			margin:0px;
+			padding:0px;
+		}
+		ul li{
+			list-style-type: none;
+			float:left;
+		}
+		ul::after, ul::before{
+			content:'';
+			display: block;
+			clear:both;
+		}
+		ul li img{
+			width:200px;
+			margin:5px;
+		}
+		div.main{
+			width:630px;
+			margin:auto;
+		}
+	</style>
+</head>
+<body>
+	<div class="main">
+		<ul>
+			<li><img src="images/1.jpg"></li>
+			<li><img src="images/2.jpg"></li>
+			<li><img src="images/3.jpg"></li>
+			<li><img src="images/4.jpg"></li>
+			<li><img src="images/5.jpg"></li>
+			<li><img src="images/6.jpg"></li>
+			<li><img src="images/7.jpg"></li>
+			<li><img src="images/8.jpg"></li>
+		</ul>
+	</div>
+	<script type="text/javascript">
+		function PopBox (){
+			this.popBox = document.getElementById('popbox');
+			PopupImage.call(this);
+
+		}
+		function PopupImage (e){
+			this.popImage;
+			if (e) {
+				this.popImage = e.target ;	
+			}
+			
+
+		}
+
+		// PopupImage.prototype.createImage = function(){
+		// 	this.popImage = document.createElement('img');
+		// 	this.popImage.src = e.target.src;
+		// }
+
+		PopupImage.prototype.createPopImage = function(e){
+			this.popImage = document.createElement('img');
+			this.popImage.src = e.target.src
+
+		}
+		PopBox.prototype = Object.create(PopupImage.prototype);
+
+
+		PopBox.prototype.createPopBox = function(){
+			this.popBox = document.createElement('div');
+			this.popBox.id = 'popbox';
+			this.popBox.appendChild(this.popImage);
+			document.body.appendChild(this.popBox);
+
+		}
+		PopBox.prototype.closePopBox = function(){
+			this.popBox.parentNode.removeChild(this.popBox);
+		}
+
+
+		PopBox.prototype.positionPopBox = function(){
+			var w = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
+			var h = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
+			this.popBox.style.position = 'absolute';
+			console.log((w - this.popBox.offsetWidth)/2);
+			this.popBox.style.left = (w - this.popBox.offsetWidth)/2 + 'px';
+			this.popBox.style.top = (h - this.popBox.offsetHeight )/2 + 'px';
+
+		}
+		PopBox.prototype.constructor = PopBox;
+
+		var gallery = document.getElementsByTagName('ul')[0];
+		gallery.onclick = function(e){
+				var popElementObject = new PopBox();
+				console.log(popElementObject);
+				// var popImageObject = new 
+
+
+			if (popElementObject.popBox) {
+				// addImageToPopUpBox(existingPopUpEl,e);
+				popElementObject.closePopBox(popElementObject.popBox);
+			}else{
+				popElementObject.createPopImage(e);
+				popElementObject.createPopBox();
+				popElementObject.positionPopBox();
+				// createPopupBox(e);
+			}
+			
+			
+		}
+
+
+
+		// var gallery = document.getElementsByTagName('ul')[0];
+		
+
+		// function createPopupBox(e){
+		// 	var popBox = document.createElement('div');	
+		// 	var image = document.createElement('img');
+
+		// 	popBox.setAttribute('id','popbox');
+		// 	image.src = e.target.src;
+
+		// 	popBox.appendChild(image);
+		// 	document.body.appendChild(popBox);
+		// 	movePopUpToCenter(popBox);
+
+		// }
+
+		// function addImageToPopUpBox(popup,e){
+		
+		// 	// image existing on DOM structure 
+		// 	var imageEl = popup.querySelector('img');
+		// 	console.log(imageEl);
+		// 	imageEl.src = e.target.src;// replace path of src attribute with new one
+
+		// }
+
+		// function movePopUpToCenter(popBox){
+		// 	// styling using javascript
+		// 	var w = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
+		// 	var h = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
+		// 	popBox.style.position = 'absolute';
+		// 	console.log((w - popBox.offsetWidth)/2);
+		// 	popBox.style.left = (w - popBox.offsetWidth)/2 + 'px';
+		// 	popBox.style.top = (h - popBox.offsetHeight )/2 + 'px';
+		// }
+
+		// function closePopBox(popBox){
+		// 	popBox.parentNode.removeChild(popBox);
+		// }
+
+		// gallery.onclick = function(e){
+		// 	var existingPopUpEl = document.getElementById('popbox');
+
+		// 	if (existingPopUpEl) {
+		// 		// addImageToPopUpBox(existingPopUpEl,e);
+		// 		closePopBox(existingPopUpEl);
+		// 	}else{
+		// 		createPopupBox(e);
+		// 	}
+			
+		// 	// console.log(e.target.src)
+		// }
+		// Assinment  when user clicks on image then create popbox right next to the cursor and image shall move along with cursor? This popbox should be closed when cusor moves out of the image element boundaries . 
+	</script>
+</body>
+</html>

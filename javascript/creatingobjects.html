@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>creatingobjects</title>
+</head>
+<body>
+	<script type="text/javascript">
+		// understanding keyword this 
+		// creating objects 
+
+		function testRun (){
+			console.log(this);
+		}
+		var testObject = {
+			name:'RAVI',
+			age: '24',
+			fullDetails: function(){
+				console.log(this.name + "'s age is "+ this.age);
+				var selfThis = this ;
+				function insideFullDetails(){
+
+					console.log(selfThis);
+				}
+				insideFullDetails();
+			}
+
+		}
+		// how to create objects 
+		function PersonalInfo(name,age,subject){
+			this.name = name;
+			this.age = age;
+			this.subject = subject;
+		}
+		var newStudent = new PersonalInfo('sameer',20, 'Maths');
+		var newStudent1 = new PersonalInfo('Ajay',18, 'Maths');
+
+		var a = 20
+		var b = a ;
+		b = 30;
+		// console.log(a);
+		var obj = {
+			name:'ravi'
+		}
+		var obj1 = obj;
+		obj1.name = 'sameer';
+		console.log(obj.name);
+
+		var obj2 = Object.create(obj);
+		obj2.name = 'ajay';
+		console.log(obj.name)
+		
+	</script>
+</body>
+</html>

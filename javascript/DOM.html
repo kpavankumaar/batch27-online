@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>DOM</title>
+</head>	
+<body>
+	<div>first</div>
+	<div>Second</div>
+	<ul>
+		<li>first</li>
+		<li>second</li>
+		<li>third</li>
+	</ul>
+<!-- 	<input type="file" accept="video/*;capture=camera">
+ -->	<script type="text/javascript">
+		var gallery = document.getElementsByTagName('ul');
+		var listItems = document.getElementsByTagName('li');
+		// gallery[0].onclick = function(){
+		// 	console.log('you clicked on ul element');
+		// }
+		gallery[0].addEventListener('click',function(event){
+			console.log('you clicked on ul element');
+			console.log(event);
+			event.stopPropagation();
+		},true);
+
+		listItems[0].addEventListener('click',function(){
+			console.log('you clicked on li element');
+		},true);
+
+
+
+
+	</script>
+</body>
+</html>

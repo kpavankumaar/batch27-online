@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>arrowfunction</title>
+</head>	
+<body>	
+	<script type="text/javascript">
+		var newFn = () => 4.4;
+		console.log(typeof newFn);
+		console.log(newFn());
+
+		//example1	
+		var newFn1 = (num,num1) => {
+			var sum = 10+num+num1 ;
+			return sum;
+		};
+		console.log(newFn1(10,15));
+		// example2 
+		var newFn2 = () => {
+			console.log(this);// points to window object
+		}
+		function newFn3(){
+			console.log(this);// value is current object 
+		}
+		document.addEventListener('click', newFn2);
+		console.log(newFn2());
+
+		// example3 
+
+		var obj = {
+			number:123,
+			process:function(){
+				console.log(this);// this keyword points to obj
+				return  () =>  console.log(this.number);  // this keyword in arrow function points to obj compared to normal function which makes the keyword this point to window object
+			}
+		}
+		var newObj1 = {
+			number : 456
+		}
+		obj.process().bind(newObj1)();
+		obj.process().apply(newObj1);
+
+		// example 4 
+		var getPersonalInfo = () => {
+			console.log('hi there ');
+		}
+		console.log(getPersonalInfo.hasOwnProperty('prototype')
+)
+	</script>
+</body>
+</html>

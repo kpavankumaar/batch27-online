@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>functioncostructor</title>
+</head>
+<body>
+	<div></div>
+	<script type="text/javascript" src="external.js"></script>
+	<script type="text/javascript">
+		// Promise 
+		// Callbacks 
+		// Closures 
+		// Modular Patterns 
+		// DOM 
+		// Ajax
+		// Typescript and Angular .
+		// Node express or mongo DB
+		
+
+		console.log(name)
+		var name = 'ravi';
+		console.log(name);
+		function Carpenter(tools,skillset){
+			this.tool = tools;
+			this.skill = skillset;
+		}
+		function Wood (type,size,shape){
+			this.woodType = type;
+			this.size = size;
+			this.shape = shape;
+		}
+
+		function TimberDepot (type,size,shape,tool,skillset){
+			// this.makeObject = function(){
+			// console.log(this.woodType + ' '+ this.size + ' ' + this.shape + ' ' + this.tool + ' '+ this.skill);
+			// }	
+			Wood.call(this,type,size,shape);
+			Carpenter.call(this,tool,skillset);
+		}
+		Carpenter.prototype.toolSet = function(){
+			console.log(this.tool);
+		}
+
+		Wood.prototype = Object.create(Carpenter.prototype);
+
+		Wood.prototype.typeOfWood = function(){
+			console.log(this.woodType);
+		}
+
+		TimberDepot.prototype = Object.create(Wood.prototype);
+
+		TimberDepot.prototype.makeObject = function(){
+			console.log(this.woodType + ' '+ this.size + ' ' + this.shape + ' ' + this.tool + ' '+ this.skill);
+		}
+
+		Wood.prototype.constructor = Wood;
+		TimberDepot.prototype.constructor = TimberDepot;
+
+		var table = new TimberDepot('forestwood', 'biglog', 'cylenderical','chisellingtool','carpenter with table making skills');
+		var chair = new TimberDepot('forestwood', 'mediumsizedlog', 'cylenderical','saw machine','carpenter with chair making skills');
+
+		table.makeObject();
+		chair.noOflegs = 4;
+		chair.makeObject = function(){
+			console.log('build a chair');
+		}
+	</script>
+</body>
+</html>

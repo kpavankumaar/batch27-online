@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>transitions</title>
+	<style type="text/css">
+		div{
+			width:48%;
+			/*border:2px solid black;*/
+			padding: 10px;
+			overflow: auto;
+			transition-duration: 3s;
+			z-index:0;
+		}
+		div:hover{
+			width:70%;
+			z-index: 1;
+		}
+
+		.left{
+			position:absolute;
+			left:0px;
+			/*float:left;*/
+		}
+		.right{
+			position:absolute;
+			right:0px;
+			/*float:right;*/
+
+		}
+	</style>
+</head>
+<body>
+	<div class="left">
+		<img src="shark_1600x1000_331873.jpg">
+	</div>
+	<div class="right">
+		<img src="shark_1600x1000_331873.jpg">
+	</div>
+</body>
+</html>

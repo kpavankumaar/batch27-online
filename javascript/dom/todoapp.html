@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>TodoApp</title>
+	<style type="text/css">
+		.main{
+			width:500px;
+			/*border:2px solid black;*/
+			margin:auto;
+		}
+		input[type=text]{
+			width:400px;
+			margin-right:5px;
+		}
+		input[name=edittask]{
+			display:none;
+		}
+		h2{
+			text-align:center;
+			border-bottom:2px solid black;
+		}
+		h3 span{
+			border-bottom:1px solid black;
+		}
+		/*.tobecompleted,.done{
+			margin-top: 15px;
+		}*/
+		/*label{
+			padding:5px;
+			background-color: lightgrey;
+			border-radius:5px;
+		}*/
+	</style>
+</head>
+<body>
+	<div  class = 'main'>
+		<div>
+			<h2>Todo App</h2>
+			<input type="text" name="Addtask">
+			<button>Addtask</button>
+		</div>
+		<div>
+			<hr>
+			<div class="tobecompleted">
+				<h3><span>To Be Completed</span></h3>
+				<div>
+					<input type="checkbox" name="checkbox">
+					<input type="text" name="edittask">
+					<label>Movie</label>
+					<button class="edit"> Edit/Save</button>
+					<button class="delete"> Delete</button>
+				</div>
+			</div>
+			<hr>
+			<div class="done">
+				<h3><span>Done</span></h3>
+				<div>
+					<input type="checkbox" name="checkbox" checked>
+					<input type="text" name="edittask">
+					<label>Movie</label>
+					<button class="edit"> Edit/Save</button>
+					<button class="delete"> Delete</button>
+				</div>
+			</div>
+		</div>	
+	</div>
+	<script type="text/javascript" src="todo.js"></script>
+</body>
+</html>

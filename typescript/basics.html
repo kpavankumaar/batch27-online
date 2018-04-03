@@ -1,0 +1,37 @@
+<html>
+    <head></head>
+    <body>
+        <script type = 'text/javascript'>
+            'use strict';
+            
+            let number = 10 ;
+            {
+                let number = 100;
+            }
+            console.log(number);
+
+            var productId = 30;
+            var updateFunction = [];
+            for(let i = 0 ; i < 2 ; i ++ ){
+                updateFunction.push(function(){ return i });
+            }
+            console.log(updateFunction[1]());
+            
+            
+            function run(){
+                funnyNumber = 100;
+            }
+            let funnyNumber = 30;
+            run();
+            console.log(funnyNumber);
+            
+            // arrow function 
+            var updatedValue = () =>  4.4 ;
+            console.log(typeof updatedValue ) ;
+            console.log(updatedValue());
+            
+        </script>
+
+    </body>
+
+</html>

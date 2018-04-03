@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<h1>Registration Form</h1>
+	<div>
+		<label>Username</label>
+		<input type="text" name="username" id="username">
+
+	</div>
+	<div>
+		<label>Email</label>
+		<input type="text" name="email" id="email">
+
+	</div>
+	<div>
+		<label>Password</label>
+		<input type="text" name="password" id="password">
+
+	</div>
+	<div>
+		<label>mobile</label>
+		<input type="text" name="mobile" id="mobile">
+
+	</div>
+	<button onclick="getData()">Register</button>
+
+	<script type="text/javascript">
+		
+		function getData(){
+			var username = document.getElementById('username').value;
+			var email = document.getElementById('email').value;
+			var password = document.getElementById('password').value;
+			var mobile  = document.getElementById('mobile').value;
+
+			var register = {};
+			register.username = username;
+			register.email = email;
+			register.password = password;
+			register.mobile = mobile;
+
+
+			console.log(register);
+
+			var reg_json = JSON.stringify(register);
+			console.log(reg_json);
+
+			var http = new XMLHttpRequest();
+			console.log(http);
+			http.onreadystatechange = function(){
+				if(this.readyState == 4 && this.status == 200){
+
+					console.log(this);
+				var response = this.response;
+					console.log(JSON.parse(response));
+				}
+
+			}
+			http.open('post', 'http://servicecity1.herokuapp.com/userReg', true);
+			http.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+			http.send(reg_json);
+
+
+		}
+
+
+
+
+	</script>
+
+</body>
+</html>

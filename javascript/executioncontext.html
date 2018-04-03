@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>execution context </title>
+</head>
+<body>
+	<script type="text/javascript">
+		// function main(){
+			console.log(name1);
+			var name1 = "ravi";
+			var name2 = name1;
+			test();
+			// one();
+			var one = function(){
+				console.log(name1);
+			}
+			one();
+
+			var run = 10;
+			function test(){
+				console.log(name1);
+			}
+
+			console.log(run);
+			// function two(){
+			// 	console.log(name2);
+			// 	one();
+			// }
+			// function three(){
+			// 	var name1 = "sneha";
+			// 	console.log(name1);
+			// 	two();
+			// }
+			// three();
+		// }
+		
+		var obj = {
+			name1: 'Imran'
+		};
+
+		console.log(obj.name1);
+		
+	</script>
+	<script src="custom1.js"></script>
+	<script type="text/javascript">
+		test();
+	</script>
+</body>
+</html>

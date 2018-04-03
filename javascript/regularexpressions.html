@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+		div{
+			background-color: #aa0011;
+		}
+	</style>
+</head>
+<body>
+	<input type="text" name="color" id="colorval">
+	<div>
+		test
+	</div>
+	<script type="text/javascript">
+		var inputVal = document.getElementById('colorval');
+		inputVal.onkeyup = function(){
+
+		}
+		// REG EXPRESSION 
+		// Identify hexdecimal value for background colors applied in input field 
+		// FORWARD SLASH / - is used at the begining of the reg expression  and at the ending of regular expression
+		// example - #AA0011
+		// /#?[0123456789ABCDEF]/ 
+
+		//			-- this regular expression would return 6matches for the example #AA0011
+		//			-- if we 'i' right after grouping then reg exp would return one match (AA0011)
+		// 'hash value is made optional when we add ? after the # in reg expression' 
+		/#?[0-9a-fA-F]{6}|[0-9a-fA-F]{3}/i 
+			1.this will Identify the lowercase hexdecimal value and 3 character hexdecimal value
+			2.by adding the or '|' operator we made reg exp support 3 character hexdecimal value or 6 hexdecimal value 
+			3. # becomes optional as we have added ? after # value .
+			4. # is optional for both 6 character hexadecimal and 3 character hexdecimal
+			5. Curly braces are useful to match the number of characters .
+			6. regexp has i after the ending forward slash this is called as pattern modifier 
+			7. 'i' will make the reg exp case insensitive 
+
+		
+		?*+{} - quantifiers 
+		[ ... ] - character ranges
+		(...|...) - Grouping and alternation 
+		^ ...$ - Anchors 
+
+		positive 
+		[abcdef] , [a-f] 
+
+
+		[a-f0-9] caracter ranges 
+		
+		negtive 
+		[^abcdef] , [^a-f] ,[^a-f0-9]
+
+		matching special character 
+		if you want to match ^ or - or [ from a string then place these special character in the middle or end of character class.
+			example : [a-z1-9-^\[]	
+				backslash is used to make the following character a literal match in the string.
+		. -> dot will select everything except for new line \n
+		[.]	-> it will loose its special meaning , means it will literally match dot in the string
+
+		example: one.*s.?t[a-z]+p.{2,}
+		
+		
+	</script>
+</body>
+</html>

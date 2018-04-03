@@ -1,0 +1,49 @@
+Document Object Model 
+
+Document object in browser has information about elements(objects) in a structured way . 
+As this structure is acceptable to all browsers we call it as a model 
+
+DOM is an interface that allows user to access the objects (elements) .
+we can use programming languages like javascript to access DOM and give set of instruction to perform an action.
+
+DOM manipulation 
+
+first step to Manipulate elements (objects ) is to choose elements using DOM
+ 1. document.getElementsByTagName('elementname');
+ 2. document.getElementsByClass('elementname');
+ 3. document.getElementById('id-value');
+
+ whenever we see 'getElements' then it would return array of objects 
+ and if we see 'getElement' this will return single object 
+
+Binding events 
+ defining type of input that a object has to respond is what is event binding . 
+ type of input can be either keyboard or mouse event.
+ example 
+ 	var gallery = document.getElementsByTagName('ul');
+ 	var listItems = document.getElementsByTagName('li');
+ 	gallery[0].onclick = function(){
+ 	 	console.log('you clicked on ul element');
+ 	 }
+ 	
+
+Bubbling and Capturing 
+	gallery[0].addEventListener('click',function(){
+ 		console.log('you clicked on ul element');
+ 	},true);
+ 	listItems[0].addEventListener('click',function(){
+ 		console.log('you clicked on li element');
+ 	},true);
+
+Bubbling and capturing will define the order of response for event triggered on parent and child elements.
+Bubbling - event on child element is first triggered and followed by parent
+Capturing - event on parent element is first triggered and followed by child element
+
+addEventListener is one of the ways of registering events on objects.
+it can accept few arguments 
+	a. first argument is event 
+	b. second argument is function that browser has to read 
+	c. third argument is Boolean value ,will result in either bubbling or capturing . False will lead to Bubbling and True - capturing 
+
+
+

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Ajax</title>
+</head>
+<body>
+	<script type="text/javascript">
+		// event registration
+
+		var xhr = new XMLHttpRequest();
+		xhr.onreadystatechange = function(){
+			if (this.readyState==4 && this.status == 200) {
+
+			}
+		}
+		xhr.open("GET", "ajax_info.txt", true);
+		xhr.send();
+
+
+		// this is for ready state 
+		var xhr = new XMLHttpRequest();
+		console.log('UNSENT', xhr.readyState); // readyState will be 0
+
+		xhr.open('GET', '/api', true);
+		console.log('OPENED', xhr.readyState); // readyState will be 1
+
+		xhr.onprogress = function () {
+		    console.log('LOADING', xhr.readyState); // readyState will be 3
+		};
+
+		xhr.onload = function () {
+		    console.log('DONE', xhr.readyState); // readyState will be 4
+		};
+
+		xhr.send(null);
+		// this is for response xml
+
+		var xhr = new XMLHttpRequest();
+		xhr.open('GET', '/server', true);
+
+		// If specified, responseType must be empty string or "document"
+		xhr.responseType = 'document';
+
+		// overrideMimeType() can be used to force the response to be parsed as XML
+		// xhr.overrideMimeType('text/xml');
+
+		xhr.onload = function () {
+		  if (xhr.readyState === xhr.DONE) {
+		    if (xhr.status === 200) {
+		      console.log(xhr.response);
+		      console.log(xhr.responseXML);
+		    }
+		  }
+		};
+
+		xhr.send(null);
+
+
+		// timeout 
+		// The XMLHttpRequest.timeout property is an unsigned long representing the number of milliseconds a request can take before automatically being terminated. The default value is 0, which means there is no timeout. Timeout shouldn't be used for synchronous XMLHttpRequests requests used in a document environment or it will throw an InvalidAccessError exception. When a timeout happens, a timeout event is fired.
+
+
+		// var xhr = new XMLHttpRequest();
+		// xhr.open('GET', '/server', true);
+
+		// xhr.timeout = 2000; // time in milliseconds
+
+		// xhr.onload = function () {
+		//   // Request finished. Do processing here.
+		// };
+
+		// xhr.ontimeout = function (e) {
+		//   // XMLHttpRequest timed out. Do something here.
+		// };
+
+		// xhr.send(null);
+		var newXhr = new XMLhttpRequest();
+		newXhr.addEventListeners('progress',updateProgress);
+		newXhr.addEventListeners('load',transferComplete);
+		newXhr.addEventListeners('error',transferedfailed);
+		newXhr.addEventListeners('abort',transferCancelled);
+		newXhr.open()
+
+		newXhr.upload.addEventListeners('progress',updateProgress);
+		newXhr.upload.addEventListeners('load',transferComplete);
+		newXhr.upload.addEventListeners('error',transferedfailed);
+		newXhr.upload.addEventListeners('abort',transferCancelled);
+		newXhr.open()
+		
+		function updateProgress(oEvent){
+			if(oEvent.lengthComputable){
+				var percentComplete = oEvent.load/oEvent.total	
+			}else {
+				// unable to compute progress
+			}
+		}
+
+		function trasferComplete (evt){
+			console.log("the transfer is complete ")
+		}	
+		
+		function trasferFailed (evt){
+			console.log("the transfer is complete ")
+		}	
+		function transferCancelled(evt){
+			console.log('the transfer has been cancelled by the user');
+		}
+
+
+
+	</script>
+</body>
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>arrays</title>
+</head>
+<body>
+	<script type="text/javascript">
+		// example 1 
+		function run(){
+			return 20;
+		}
+		var ratings = [];
+		// ratings = new Array();
+		ratings.push(5);
+		ratings.push(3,5);
+		ratings.push(2);
+		console.log(ratings);
+
+		console.log(ratings.length);
+		var num = ratings.pop();
+		var returnedValue = run()
+
+		// example 2 
+		var exp2 = [5,3,9,4]
+		var firstRating = exp2.shift();
+		var secondRating = exp2.unshift(2);
+		// example 3
+		var exp3 = [4 , 1, 5];
+		var exp3NewRating = exp3.concat([7,8],9,10);
+		// concat method would return new array value . this means original array (exp3) value is not changed 
+
+		// example 4 
+		var exp4 = [3,2,5,6,9];
+		var newExp4 = exp4.slice(2);// exp4[2] this element is copied and it will prepare an array of returned values  .
+		var newExp4_1 = exp4.slice(1,4);// slicing start from exp4[1](this value is included ) and before exp4[3](i.e this value is not included);
+
+		// example 5
+		var exp5 = [2,7,9];
+		exp5.splice(2,1,44);
+
+		// exp5 element modified by removing the exp5[2] 
+		// 1 - represents number of elements to be deleted 
+		// 44 - add this to the array
+		// resulting array will be [2,7,44]
+		console.log(exp5);
+		var exp5_1 = exp5.splice(1,0,55)
+		// select the exp5[1] and remove zero number of elements . 
+		// exp5[1] position add 55 as value and move existing values to new position.
+		// result array will be [2,55,7,44]
+		console.log(exp5)
+
+		var exp5_2 = exp5.splice(1,2,8,99,15);
+		// exp5 modified result [2,8,99,15,44]
+		console.log(exp5);
+		
+
+		// example 6
+		var exp6 = [1,2,3,4];
+		exp6.reverse();
+
+		// example 7
+		var exp7 = [4,1,3,2,5];
+		exp7.sort();
+		var exp7_1 = [14,11,13,12,15]
+		exp7_1.sort();
+		var exp7_2 = [4,1,3,22,2,5,10]
+		exp7_2.sort(function( value1,value2){
+			return value1 - value2;
+		});
+		// sort method is expecting postive value if value 1 is greater than value2 
+		// sort method is expecting negative value if value 2 is greater than value1 
+		// sort method is expecting zero value if value1 - value2 are equal
+		exp7_3 = [true,false,true,true,false]
+		exp7_3.sort();
+
+		// example 8
+		var exp8 = [1,2,3,7,2,3,1]
+		var exp8_1 = exp8.indexOf(3);// exp8_1 value will be 2 . here 2 is the index number of array exp8.
+		//at exp8[2] position we have argument 3 matching value 
+		var exp8_2 = exp8.indexOf('2'); // this would return -1 
+
+		var exp8_3 = exp8.lastIndexOf(1);// this would return 6
+
+
+	</script>
+</body>
+</html>

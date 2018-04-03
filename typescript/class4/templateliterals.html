@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>template literals </title>
+</head>
+<body>
+	<script type="text/javascript">
+		var number = 10;
+		console.log(`number : ${number}`);
+
+		var msg = `A
+		B
+		C`;
+		console.log(msg);
+
+		function run(message){
+			let num = 20 ;
+			console.log(message)
+		}
+		let num = 30;
+		run(`numbervalue : ${num}`);
+
+
+		function info(msg,...newvalue){
+			console.log(msg);
+			console.log(newvalue);
+			// console.log(newcontent)
+		}
+		let newInfo = 50;
+		let newContent = 10;
+		info `testcontent ${newInfo} for ${newContent}` ;
+
+
+		
+	</script>
+</body>
+</html>

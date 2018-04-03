@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>callbacks</title>
+</head>
+<body>
+	
+	<script type="text/javascript">
+		//callbacks
+		// setTimeout(function(){console.log('this is printed after minimum time of 5 sec ')},5000);
+		// setInterval(function(){console.log('this is read after every 3 sec gap')},3000);
+		// var y = 10;
+		// while(y){
+		// 	y = y-1;
+		// 	console.log(' read ');
+		// }
+
+
+		var x = 0;
+		// function cb(){
+
+		// 	// var num = Math.random();
+		// 	// if (num > 0.5) {
+		// 	// 	x = x + 1 ; 
+		// 	// 	console.log(x)	
+		// 	// }else{
+		// 	// 	console.log('num value is low');
+		// 	// }
+			
+		// }
+		// callback hell
+		// function one(cb){
+		// 	console.log('one');
+		// 	setTimeout(cb,1000);
+		// }
+
+		// function two(cb){
+		// 	console.log('two');
+		// 	// var x = 10;
+		// 	// while(x){
+		// 	// 	// x = x-1;
+		// 	// 	console.log('run');
+		// 	// }
+		// 	setTimeout(cb,1000);
+		// }
+		// function three(){
+		// 	console.log('three');
+		// }
+		// one(function(){two(three)});
+
+
+		// function trySomething(ok,err){
+		// 	setTimeout(function(){
+		// 		var num = Math.random();
+		// 		if (num > 0.5) {
+		// 			ok(num);
+		// 		}
+		// 		else{
+		// 			err(num);
+		// 		}
+		// 	},1000)
+		// }
+
+		// trySomething(
+		// 	function(num){
+		// 		console.log('sucess'+ num);
+		// 	},
+		// 	function(num){
+		// 		console.log('sorry'+ num);
+		// 	});
+
+		// function trySomething(cb){
+		// 	setTimeout(function(){
+		// 		var num = Math.random();
+		// 		if (num > 0.5) {
+		// 			cb(null,num);
+		// 		}
+		// 		else{
+		// 			cb('too low');
+		// 		}
+		// 	},1000)
+		// }
+
+		// trySomething(function(err,num){
+		// 	if (err) {
+		// 		console.log(err);
+		// 	}else{
+		// 		console.log('number ' + num);
+		// 	}
+
+		// 	// console.log('sucess'+ num);
+		// 	});
+		
+
+		function getData(d,cb){
+			setTimeout(function(){cb(d)},1000);
+		}
+		getData(10,function(num1){
+			var x = 1 + num1;
+			getData(30,function(num2){
+				var y = 1 + num2;
+				getData('meaning of life ' + (x+y), function(answer){
+					console.log(answer);
+				});	
+			})
+
+		});
+		// Generators 
+		// var num;
+		function * gen(){
+			console.log('hello');
+			console.log('ravi and');
+			yield 10;
+			console.log('world');
+			yield 20;
+			console.log('second pause');
+		}
+		var it = gen();
+		var run = it.next().value;
+
+		function* countAppleSales () {
+		  var saleList = [3, 7, 5];
+		  for (var i = 0; i < saleList.length; i++) {
+		    yield saleList[i];
+		  }
+		}
+		var test = countAppleSales();
+	</script>
+</body>
+</html>
